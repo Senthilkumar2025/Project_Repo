@@ -1,0 +1,66 @@
+country,country_name,type,level,Year2021,Year2022,Year2023
+NA,Crown Dependencies,Total net production,Total,82520,82948.5,69212.347
+NA,Crown Dependencies,Imports,Total,14648,14189.4,21635.908
+NA,Crown Dependencies,Exports,Total,8465,8167.8,4308.347
+NA,Crown Dependencies,Energy absorbed by pumping,Total,1475,1485.4,1347.901
+NA,Crown Dependencies,Energy supplied,Total,87228,87484.7,85192.007
+UK,East Midlands,Total net production,Total,41221,41351.303,41705
+UK,East Midlands,Imports,Total,4568,3705.423,2223
+UK,East Midlands,Exports,Total,10940,9185.794,10030
+UK,East Midlands,Energy absorbed by pumping,Total,NA,949.527,425
+UK,East Midlands,Energy supplied,Total,33931,34921.405,33473
+UK,East of England,Total net production,Total,76398,79885.766,81967.627
+UK,East of England,Imports,Total,13817,15072,11573.411
+UK,East of England,Exports,Total,24791,28108.9,25480.503
+UK,East of England,Energy absorbed by pumping,Total,1570,1530.5,1372.884
+UK,East of England,Energy supplied,Total,63854,65318.366,66687.651
+UK,London,Total net production,Total,29077.932,29653.682,28939.089
+UK,London,Imports,Total,14976.458,15218.109,15633.609
+UK,London,Exports,Total,9919.365,10655.394,10409.266
+UK,London,Energy absorbed by pumping,Total,0,0,NA
+UK,London,Energy supplied,Total,34135.025,34216.397,34163.432
+UK,North East England,Total net production,Total,614155,619059,571799.713
+UK,North East England,Imports,Total,28338,27842,31701.359
+UK,North East England,Exports,Total,78863,80301,80187.327
+UK,North East England,Energy absorbed by pumping,Total,7497,8252,8347.706
+UK,North East England,Energy supplied,Total,556133,558348,514966.039
+UK,North West England,Total net production,Total,10424,11234,10834.143
+UK,North West England,Imports,Total,3577,2281,3053
+UK,North West England,Exports,Total,5614,5015,4949.7
+UK,North West England,Energy absorbed by pumping,Total,0,NA,0
+UK,North West England,Energy supplied,Total,8387,8500,8937.443
+UK,Northern Ireland,Total net production,Total,29689.24,30086.974,29234.886
+UK,Northern Ireland,Imports,Total,871.263,1116.408,1621.519
+UK,Northern Ireland,Exports,Total,1583.011,1794.91,1649.249
+UK,Northern Ireland,Energy absorbed by pumping,Total,532.404,398.643,499.328
+UK,Northern Ireland,Energy supplied,Total,28445.088,29009.829,28707.828
+UK,Scotland,Total net production,Total,540767.954,538042.323,551685.823
+UK,Scotland,Imports,Total,19903,21134,12826.095
+UK,Scotland,Exports,Total,61404,61248,76094.985
+UK,Scotland,Energy absorbed by pumping,Total,6723.585,7104.325,7331.317
+UK,Scotland,Energy supplied,Total,492543.369,490823.998,481085.616
+UK,South East England,Total net production,Total,12284,11522.9,13256.54
+UK,South East England,Imports,Total,12398,12157.9,12692.329
+UK,South East England,Exports,Total,6867,5204.2,7292.953
+UK,South East England,Energy absorbed by pumping,Total,294,286.2,118.552
+UK,South East England,Energy supplied,Total,17521,18190.4,18537.364
+UK,South West England,Total net production,Total,279702.622,285265.649,280234
+UK,South West England,Imports,Total,43181,42894.881,47179
+UK,South West England,Exports,Total,6154,5134.231,3270
+UK,South West England,Energy absorbed by pumping,Total,2468,2478.162,2233
+UK,South West England,Energy supplied,Total,314261.622,320548.137,321910
+UK,Wales,Total net production,Total,5927,7024.859,6500
+UK,Wales,Imports,Total,4828,4072.912,5172
+UK,Wales,Exports,Total,3795,4137.077,4264
+UK,Wales,Energy absorbed by pumping,Total,NA,NA,NA
+UK,Wales,Energy supplied,Total,6960,6960.694,7408
+UK,West Midlands,Total net production,Total,4051,3996.1,3183.095
+UK,West Midlands,Imports,Total,11106,11926.2,12847.483
+UK,West Midlands,Exports,Total,2831,3249,3215.07
+UK,West Midlands,Energy absorbed by pumping,Total,790,799.1,726.32
+UK,West Midlands,Energy supplied,Total,11536,11874.2,12089.188
+UK,Yorkshire and the Humber,Total net production,Total,2167.69,2204.738,2164.862
+UK,Yorkshire and the Humber,Imports,Total,7718.393,7566.69,7553.012
+UK,Yorkshire and the Humber,Exports,Total,1419.691,NA,1391.674
+UK,Yorkshire and the Humber,Energy absorbed by pumping,Total,1942.514,1833.679,1717.5
+UK,Yorkshire and the Humber,Energy supplied,Total,6523.878,6549.101,6608.7

@@ -1,0 +1,105 @@
+country,country_name,type,level,Year2021,Year2022,Year2023
+UK,Crown Dependencies,Conventional thermal,Level 1,30728,31316,30092.635
+UK,Crown Dependencies,Nuclear,Level 1,41430,40128.5,26995.628
+UK,Crown Dependencies,Hydro,Level 1,1476,1360.9,1239.248
+UK,Crown Dependencies,Pumped hydro power,Level 2,1110,1093.2,983.19
+UK,Crown Dependencies,Wind,Level 1,5340,6387.9,7177.346
+UK,Crown Dependencies,Solar,Level 1,3070,3264.3,3488.979
+UK,Crown Dependencies,Geothermal,Level 1,0,0,0
+UK,Crown Dependencies,Other,Level 1,476,490.9,218.509
+UK,East Midlands,Conventional thermal,Level 1,18909,20234.209,19334
+UK,East Midlands,Nuclear,Level 1,14932,14718.368,15290
+UK,East Midlands,Hydro,Level 1,4535,3458.015,4690
+UK,East Midlands,Pumped hydro power,Level 2,619,603.713,987
+UK,East Midlands,Wind,Level 1,1425,1504.063,1326
+UK,East Midlands,Solar,Level 1,1386,1402.766,1043
+UK,East Midlands,Geothermal,Level 1,0,0,0
+UK,East Midlands,Other,Level 1,34,33.882,22
+UK,East of England,Conventional thermal,Level 1,47817,47246.628,48042.915
+UK,East of England,Nuclear,Level 1,22727,26785.6,28255.421
+UK,East of England,Hydro,Level 1,3169,3007.403,2650.153
+UK,East of England,Pumped hydro power,Level 2,1186,1155.492,1037.317
+UK,East of England,Wind,Level 1,488,581.917,600.67
+UK,East of England,Solar,Level 1,2110,2168.74,2317.645
+UK,East of England,Geothermal,Level 1,0,0,0
+UK,East of England,Other,Level 1,87,95.478,100.826
+UK,North East England,Conventional thermal,Level 1,15533.149,14104.326,14072.337
+UK,North East England,Nuclear,Level 1,0,0,0
+UK,North East England,Hydro,Level 1,19.272,17.871,14.929
+UK,North East England,Pumped hydro power,Level 2,0,0,0
+UK,North East England,Wind,Level 1,12781.731,14780,13898.806
+UK,North East England,Solar,Level 1,743.78,751.485,952.973
+UK,North East England,Geothermal,Level 1,0,0,0
+UK,North East England,Other,Level 1,0,0,0.044
+UK,London,Conventional thermal,Level 1,390141,376128,320437.701
+UK,London,Nuclear,Level 1,80038,72155,72274.133
+UK,London,Hydro,Level 1,25690,25888,20041.878
+UK,London,Pumped hydro power,Level 2,5451,5910,6661.083
+UK,London,Wind,Level 1,78218,103707,112174
+UK,London,Solar,Level 1,38098,39401,46184
+UK,London,Geothermal,Level 1,165,157,165.25
+UK,London,Other,Level 1,1805,1623,522.751
+UK,North West England,Conventional thermal,Level 1,9795,10485,10170.043
+UK,North West England,Nuclear,Level 1,0,0,0
+UK,North West England,Hydro,Level 1,35,26,18.2
+UK,North West England,Pumped hydro power,Level 2,0,0,0
+UK,North West England,Wind,Level 1,594,723,645.9
+UK,North West England,Solar,Level 1,0,0,0
+UK,North West England,Geothermal,Level 1,0,0,0
+UK,North West England,Other,Level 1,0,0,0
+UK,Northern Ireland,Conventional thermal,Level 1,22571.711,21745.666,19963.734
+UK,Northern Ireland,Nuclear,Level 1,0,0,0
+UK,Northern Ireland,Hydro,Level 1,962.861,885.765,921.979
+UK,Northern Ireland,Pumped hydro power,Level 2,288.676,201.184,234.936
+UK,Northern Ireland,Wind,Level 1,6148.508,7444.742,8349.172
+UK,Northern Ireland,Solar,Level 1,6.16,10.801,0
+UK,Northern Ireland,Geothermal,Level 1,0,0,0
+UK,Northern Ireland,Other,Level 1,0,0,0
+UK,Scotland,Conventional thermal,Level 1,35586,37021.751,34803.244
+UK,Scotland,Nuclear,Level 1,0,0,0
+UK,Scotland,Hydro,Level 1,5565,4039,5802.417
+UK,Scotland,Pumped hydro power,Level 2,22,77.259,636.1
+UK,Scotland,Wind,Level 1,5146,5536.987,6300.26
+UK,Scotland,Solar,Level 1,3930,3991.477,3792.038
+UK,Scotland,Geothermal,Level 1,0,0,0
+UK,Scotland,Other,Level 1,0,0,10.99
+UK,South East England,Conventional thermal,Level 1,108210,126885,110084.238
+UK,South East England,Nuclear,Level 1,56100,55540,53270.8
+UK,South East England,Hydro,Level 1,39180,20708,36083.636
+UK,South East England,Pumped hydro power,Level 2,3410,2249,2009.408
+UK,South East England,Wind,Level 1,47712,47929,49495.207
+UK,South East England,Solar,Level 1,13051,13778,12137.315
+UK,South East England,Geothermal,Level 1,0,0,0
+UK,South East England,Other,Level 1,91,78,0
+UK,South East England,Conventional thermal,Level 1,60607.854,68922.949,53956.44
+UK,South East England,Nuclear,Level 1,384008.125,379093.955,393153.254
+UK,South East England,Hydro,Level 1,64879.956,54432.864,68706.552
+UK,South East England,Pumped hydro power,Level 2,4786.979,5070.791,9082.043
+UK,South East England,Wind,Level 1,21472.916,24710.749,26134.02
+UK,South East England,Solar,Level 1,8657.27,9572.843,9651.478
+UK,South East England,Geothermal,Level 1,87.933,119.937,84.084
+UK,South East England,Other,Level 1,559.515,673.71,0
+UK,Wales,Conventional thermal,Level 1,4241,4808,4155.654
+UK,Wales,Nuclear,Level 1,0,0,0
+UK,Wales,Hydro,Level 1,6967,5437.8,7681.337
+UK,Wales,Pumped hydro power,Level 2,205,200.3,583.988
+UK,Wales,Wind,Level 1,1010,1198.4,1350.356
+UK,Wales,Solar,Level 1,66,78.7,69.193
+UK,Wales,Geothermal,Level 1,0,0,0
+UK,Wales,Other,Level 1,0,0,0
+UK,West Midlands,Conventional thermal,Level 1,190121,199722.444,185046
+UK,West Midlands,Nuclear,Level 1,0,0,0
+UK,West Midlands,Hydro,Level 1,43784.622,37556.721,49275
+UK,West Midlands,Pumped hydro power,Level 2,1825.204,1825.96,1632
+UK,West Midlands,Wind,Level 1,17523,17565.332,17318
+UK,West Midlands,Solar,Level 1,21757,24016.821,22887
+UK,West Midlands,Geothermal,Level 1,5867,5821.46,5708
+UK,West Midlands,Other,Level 1,650,582.871,0
+UK,Yorkshire and the Humber,Conventional thermal,Level 1,4295,4394.819,4380.143
+UK,Yorkshire and the Humber,Nuclear,Level 1,0,0,0
+UK,Yorkshire and the Humber,Hydro,Level 1,0,0,0
+UK,Yorkshire and the Humber,Pumped hydro power,Level 2,0,0,0
+UK,Yorkshire and the Humber,Wind,Level 1,226.701,211.448,220.613
+UK,Yorkshire and the Humber,Solar,Level 1,145.937,172.013,190.329
+UK,Yorkshire and the Humber,Geothermal,Level 1,0,0,0
+UK,Yorkshire and the Humber,Other,Level 1,0,0,0
