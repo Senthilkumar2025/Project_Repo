@@ -1,30 +1,306 @@
 ---
-title: "Test"
+title: "Energy Analysis "
 author: "SenthilKumar Sivakumar"
-date: "2025-01-22"
-output: html_document
+date: "2024-01-18"
+output:
+  pdf_document:
+    latex_engine: xelatex
+  html_document: default
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## Cycle 1: CRISP-DM Framework
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+### 1.1 Business Understanding
+The goal of this phase was to define the scope and objectives of the energy analysis project. The focus was on understanding energy production trends across different regions and years, identifying trends over time, and determining the impact of various energy types on total production.
+The objective of Cycle 1 is to explore energy production trends across different regions and years, focusing on total production and identifying trends over time.
 
-```{r cars}
-summary(cars)
+
+```{r tinytex}
+# Remove existing installation (if needed)
+#tinytex::uninstall_tinytex()
+
+# Install TinyTeX (force if necessary)
+#tinytex::install_tinytex(force = TRUE)
+tinytex::tlmgr_install(c("xetex", "fontspec", "unicode-math"))
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
+```{r setup, include=FALSE}
+#options(repos = c(CRAN = "https://cloud.r-project.org/"))
+knitr::opts_chunk$set(echo = TRUE)
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+# Install and load required packages
+required_packages <- c("utf8", "rmarkdown", "knitr", "dplyr", "ggplot2", "tinytex")
+
+new_packages <- required_packages[!(required_packages %in% installed.packages()[, "Package"])]
+
+if (length(new_packages)) install.packages(new_packages)
+
+# Load the installed packages
+lapply(required_packages, library, character.only = TRUE)
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## R Libraries Used
+```{r install library}
+#install.packages("ProjectTemplate", repos = "https://cloud.r-project.org")
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(tinytex)
+```
+
+### 1.2 Data Understanding
+The following two data sets are used for the analysis of energy data, lists up the amount of power consumption of all UK regions from year 2021 to 2023
+▪ Energy Types 
+▪ Energy Total
+
+This phase involved collecting and exploring the data sets related to energy production and consumption across UK regions from 2021 to 2023. The datasets included energy types and total energy production values. Exploratory data analysis was conducted to identify missing values, data types, and summary statistics.Reflection:
+
+Data exploration provided insights into missing values and inconsistencies.
+The process of understanding data structures helped in defining preparation strategies.
+Challenges included dealing with inconsistent data formats and missing values.
+
+```{r Read_dataset}
+library(readr)
+df_EnergyTypes  <- read_csv("data/Energy_Types.csv", show_col_types = FALSE)
+df_EnergyTotal  <- read_csv("data/Energy_Total.csv", show_col_types = FALSE)
+```
+
+```{r summary}
+summary(df_EnergyTypes)
+```
+```{r df_EnergyTypes}
+str(df_EnergyTypes)
+```
+
+```{r missingdata_df_EnergyTypes}
+sum(is.na(df_EnergyTypes))
+```
+
+```{r missingdata_df_EnergyTotal}
+sum(is.na(df_EnergyTotal))
+```
+
+```{r samplevalues}
+head(df_EnergyTypes, 10)
+```
+
+
+
+### 1.3 Data Preparation
+The data was cleaned and transformed to ensure consistency and usability. 
+This included converting data types, renaming columns for clarity, and handling missing values by replacing them appropriately.
+```{r EnergyTypes_Data_preparation}
+# Convert data types
+
+df_EnergyTypes$country_name= as.factor(df_EnergyTypes$country_name)
+df_EnergyTypes$type= as.factor(df_EnergyTypes$type)
+df_EnergyTypes$Year2021 = as.integer(df_EnergyTypes$Year2021)
+df_EnergyTypes$Year2022 = as.integer(df_EnergyTypes$Year2022)
+df_EnergyTypes$Year2023 = as.integer(df_EnergyTypes$Year2023)
+df_EnergyTypes$type= factor(df_EnergyTypes$type, levels = c("Conventional thermal", "Geothermal","Hydro","Nuclear", "Other", "Pumped hydro power", "Solar", "Wind")) 
+  show_col_types = FALSE
+
+```
+
+```{r EnergyTotal_Data_preparation}
+# Convert data types
+df_EnergyTotal$country_name= as.factor(df_EnergyTotal$country_name)
+df_EnergyTotal$type= as.factor(df_EnergyTotal$type)
+df_EnergyTotal$level= as.factor(df_EnergyTotal$level)
+df_EnergyTotal$Year2021 = as.integer(df_EnergyTotal$Year2021)
+df_EnergyTotal$Year2022 = as.integer(df_EnergyTotal$Year2022)
+df_EnergyTotal$Year2023 = as.integer(df_EnergyTotal$Year2023)
+```
+
+
+
+```{r Energy Types_rename-columnsname}
+library(dplyr)
+# Energy Types - Rename the column headers  - Country_name, Year2021,Year2022,Year2023
+df_EnergyTypes <- df_EnergyTypes %>%
+  select(country,country_name,type,level,Year2021,Year2022,Year2023) %>%
+  rename(Regions = country_name,
+         energyProd_2021 = Year2021,
+         energyProd_2022 = Year2022,
+         energyProd_2023 = Year2023)
+names(df_EnergyTypes)
+```
+
+```{r EnergyTotal_rename-columnsname}
+library(dplyr)
+# Rename columns names
+df_EnergyTotal <- df_EnergyTotal %>%
+  select(country,country_name,type,level,Year2021,Year2022,Year2023) %>%
+  rename(Regions = country_name,
+         TotalEnergy_2021 = Year2021,
+         TotalEnergy_2022 = Year2022,
+         TotalEnergy_2023 = Year2023)
+names(df_EnergyTotal)
+```
+
+
+```{r EnergyTotal_Replace_NA}
+# Energy Total - Replace NA values appropriately
+library(dplyr)
+library(tidyr)
+df_EnergyTotal <- df_EnergyTotal %>%
+  select(country, Regions, everything()) %>%
+  mutate(country = replace_na(country, "UK")) %>%
+  mutate(across(where(is.numeric), ~replace(., is.na(.), 0))) %>%  # Replace NAs in numeric columns with 0
+  mutate(across(where(is.character), ~replace_na(., "Unknown")))  # Replace NAs in character columns
+
+# View the modified dataframe (use only in RStudio interactive mode)
+View(df_EnergyTotal)
+```
+
+
+
+```{r Energytype_Summary}
+#	Energy Types - Skimming – High level diagnostic report to understanding missing data, data composition 
+summary(df_EnergyTypes)
+```
+### 1.4 Modeling
+The modeling phase involved restructuring and aggregating the data to facilitate meaningful analysis. Techniques such as grouping and summarizing were used to analyze trends in energy production across years and regions
+```{r Data-Analysis}
+# Analyze total energy production
+df_UKtotalEnergy <- df_EnergyTotal %>%
+  group_by(Regions) %>%
+  summarise(totalEnergy_2021 = sum(TotalEnergy_2021),
+            totalEnergy_2022 = sum(TotalEnergy_2022),
+            totalEnergy_2023 = sum(TotalEnergy_2023)) %>%
+  ungroup()
+
+```
+
+
+### 1.5 Evaluation
+Total energy production for each year across regions
+```{r Visualization}
+# Visualization
+library(ggplot2)
+df_UKtotalEnergy %>%
+  ggplot(aes(Regions, totalEnergy_2023)) + 
+  geom_bar(stat = "identity", fill = "steelblue", na.rm = TRUE) +  # Handle NAs
+  theme_minimal() +
+  labs(title = "Total Energy Production in 2023 by Region",
+       x = "Region",
+       y = "Total Energy 2023") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r total energy production in Year 2022}
+df_UKtotalEnergy %>%
+  ggplot(aes(Regions, totalEnergy_2022)) + 
+  geom_bar(aes(fill=Regions), stat = "identity", position = "dodge")+
+  #scale_fill_brewer(palette = "YlGnBu")+
+  theme(axis.text.x = element_text(angle =45, hjust = 1))
+```
+
+
+```{r EnergyTotal - total energy production in Year 2021}
+df_UKtotalEnergy %>%
+  ggplot(aes(Regions, totalEnergy_2021)) + 
+  geom_bar(aes(fill='Total Energy 2021'), stat = "identity", position = "dodge", color ='blue')+
+  scale_fill_brewer(palette = "YlGnBu")+
+  theme(axis.text.x = element_text(angle =45, hjust = 1))
+```
+
+
+### 1.6 Deployment
+
+The results will guide further analysis in Cycle 2 to investigate correlations between energy production and other variables.
+
+
+# Cycle 2: CRISP-DM Framework
+
+### 2.1 Business Understanding
+
+Cycle 2 aims to explore relationships between energy production levels across different years and understand trends across regions.
+
+### 2.2 Data Understanding
+Analysis the relation between the total energy production in Year 2021 and 2022 in United Kingdom
+
+### 2.4 Modeling
+Identified top energy-producing regions.
+Applied visualization techniques to compare production levels.
+• North East England, Scotland and South West England are top energy producers in 2023
+• North West England, Wales and Yorkshire are low energy producers in 2023
+```{r Top energy producing region}
+## Arrange data based on total Energy_2023 in descending order
+library(dplyr)
+df_TopEnergyProducers <- df_UKtotalEnergy %>%
+  arrange(desc(totalEnergy_2023)) %>%
+  head(13)
+# Load required libraries
+library(ggplot2)
+library(viridis)
+# Create the bar plot w
+df_TopEnergyProducers %>%
+  ggplot(aes(reorder(Regions,totalEnergy_2023),totalEnergy_2023, fill= Regions)) +
+  geom_bar(stat = "identity", position= "dodge") +
+  coord_flip()+
+  scale_y_continuous(labels = scales::comma) +
+  labs(x = "Regions", y="Energy Production(GWh)", title = "UK Top Energy Producers in 2023")+ 
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme_minimal()+
+  scale_fill_viridis(discrete = TRUE, 
+                     limits = c("North East England", 
+                                "Scotland", 
+                                "South West England", 
+                                "East of England", 
+                                "Crown Dependencies", 
+                                "London",
+                                "East Midlands",
+                                "Northern Ireland",
+                                "South East England",
+                                "West Midlands",
+                                "North West England",
+                                "Wales",
+                                "Yorkshire and the Humber"), 
+                     option = "D")+
+  theme(legend.position ="none")
+```
+
+### 2.5 Evaluation:
+The results indicate relationships between energy production over the years and regional variations.
+Different region in Untied Kingdom produce the energy through Conventional Thermal, Geothermal, Hydro, Nuclear, Solar and Wind. But we need to know what energy types are produced by each regions that come under top 5 energy producers in United Kingdom.
+
+```{r Data Analysis for Energy type produced in UK}
+
+df_energyTypes_topProducers <- df_EnergyTypes %>%
+  inner_join(df_TopEnergyProducers, by = c("Regions"))
+
+df_energyTypes_topProducers <- df_energyTypes_topProducers %>%
+  select(country, Regions, type, energyProd_2021, energyProd_2022, energyProd_2023)
+
+ggplot(df_energyTypes_topProducers, 
+       aes(Regions,energyProd_2023,color = type))+
+  geom_point(size=5)+
+  scale_y_continuous(labels = scales::comma)+
+  labs(x = "Regions", y="Energy Production (GWh)", title = "Energy Type of Top Energy Producers in 2023", 
+       color = "Energy Type")+ 
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme_gray()+
+  scale_colour_viridis_d(option = "magma")+
+theme(axis.text.x = element_text(angle =45, hjust = 1))
+
+```
+
+
+### 2.6 Deployment
+
+Insights can guide stakeholders in resource planning and policy making for energy management.
+• Nuclear and conventional thermal are the most of the energy type produced by UK
+• Solar and wind are the next energy type produced by UK
+• 1st South East England produce more energy through Nuclear
+• 2nd London produce more energy through Conventional Thermal
+
+
+
+
+
