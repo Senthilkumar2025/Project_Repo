@@ -44,7 +44,7 @@ lapply(required_packages, library, character.only = TRUE)
 
 ## R Libraries Used
 ```{r install library}
-#install.packages("ProjectTemplate", repos = "https://cloud.r-project.org")
+install.packages("ProjectTemplate", repos = "https://cloud.r-project.org")
 library(dplyr)
 library(tidyr)
 library(ggplot2)
@@ -70,6 +70,7 @@ df_EnergyTypes  <- read_csv("data/Energy_Types.csv", show_col_types = FALSE)
 df_EnergyTotal  <- read_csv("data/Energy_Total.csv", show_col_types = FALSE)
 ```
 
+
 ```{r summary}
 summary(df_EnergyTypes)
 ```
@@ -94,76 +95,15 @@ head(df_EnergyTypes, 10)
 ### 1.3 Data Preparation
 The data was cleaned and transformed to ensure consistency and usability. 
 This included converting data types, renaming columns for clarity, and handling missing values by replacing them appropriately.
-```{r EnergyTypes_Data_preparation}
-# Convert data types
 
-df_EnergyTypes$country_name= as.factor(df_EnergyTypes$country_name)
-df_EnergyTypes$type= as.factor(df_EnergyTypes$type)
-df_EnergyTypes$Year2021 = as.integer(df_EnergyTypes$Year2021)
-df_EnergyTypes$Year2022 = as.integer(df_EnergyTypes$Year2022)
-df_EnergyTypes$Year2023 = as.integer(df_EnergyTypes$Year2023)
-df_EnergyTypes$type= factor(df_EnergyTypes$type, levels = c("Conventional thermal", "Geothermal","Hydro","Nuclear", "Other", "Pumped hydro power", "Solar", "Wind")) 
-  show_col_types = FALSE
 
-```
-
-```{r EnergyTotal_Data_preparation}
-# Convert data types
-df_EnergyTotal$country_name= as.factor(df_EnergyTotal$country_name)
-df_EnergyTotal$type= as.factor(df_EnergyTotal$type)
-df_EnergyTotal$level= as.factor(df_EnergyTotal$level)
-df_EnergyTotal$Year2021 = as.integer(df_EnergyTotal$Year2021)
-df_EnergyTotal$Year2022 = as.integer(df_EnergyTotal$Year2022)
-df_EnergyTotal$Year2023 = as.integer(df_EnergyTotal$Year2023)
+```{r load_preprocessing, echo=TRUE}
+library(readr)
+# Source the external preprocessing script
+source("munge/data_preprocessing.R")
 ```
 
 
-
-```{r Energy Types_rename-columnsname}
-library(dplyr)
-# Energy Types - Rename the column headers  - Country_name, Year2021,Year2022,Year2023
-df_EnergyTypes <- df_EnergyTypes %>%
-  select(country,country_name,type,level,Year2021,Year2022,Year2023) %>%
-  rename(Regions = country_name,
-         energyProd_2021 = Year2021,
-         energyProd_2022 = Year2022,
-         energyProd_2023 = Year2023)
-names(df_EnergyTypes)
-```
-
-```{r EnergyTotal_rename-columnsname}
-library(dplyr)
-# Rename columns names
-df_EnergyTotal <- df_EnergyTotal %>%
-  select(country,country_name,type,level,Year2021,Year2022,Year2023) %>%
-  rename(Regions = country_name,
-         TotalEnergy_2021 = Year2021,
-         TotalEnergy_2022 = Year2022,
-         TotalEnergy_2023 = Year2023)
-names(df_EnergyTotal)
-```
-
-
-```{r EnergyTotal_Replace_NA}
-# Energy Total - Replace NA values appropriately
-library(dplyr)
-library(tidyr)
-df_EnergyTotal <- df_EnergyTotal %>%
-  select(country, Regions, everything()) %>%
-  mutate(country = replace_na(country, "UK")) %>%
-  mutate(across(where(is.numeric), ~replace(., is.na(.), 0))) %>%  # Replace NAs in numeric columns with 0
-  mutate(across(where(is.character), ~replace_na(., "Unknown")))  # Replace NAs in character columns
-
-# View the modified dataframe (use only in RStudio interactive mode)
-View(df_EnergyTotal)
-```
-
-
-
-```{r Energytype_Summary}
-#	Energy Types - Skimming – High level diagnostic report to understanding missing data, data composition 
-summary(df_EnergyTypes)
-```
 ### 1.4 Modeling
 The modeling phase involved restructuring and aggregating the data to facilitate meaningful analysis. Techniques such as grouping and summarizing were used to analyze trends in energy production across years and regions
 ```{r Data-Analysis}
